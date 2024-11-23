@@ -9,6 +9,19 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+app.post('/api/users',function(req,res){
+  let userName = Object.values(req.body).toString();
+  res.json({'username': userName});
+});
+
+app.post('/api/users/:_id/exercises',function(req,res){
+  let data = Object.values(req.body);
+  console.log('data = ' + data);
+  res.json({'data = ': data});
+});
+
 
 
 
